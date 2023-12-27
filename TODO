@@ -1,0 +1,13 @@
+Rzeczy do zrobinia w najblizszym czsie:
+
+- opcja umozliwiajaca wypisywanie okraslonej ilosci wynikow
+  tzn ograniczona ilosc wierszy
+- skrypty umozliwiajace budowanie calej rodziny rozwiazan w zaleznosci
+  od np masy gwiazdy
+- skrypty ulatwiajace i automatyzujace rysowanie wykresow
+- lepsza obsluge bladow
+
+
+Rzeczy o zrobienia w dalszej przyszlosci:
+- zaimplementowac inne metody calkowania riownaie Lame'a - Emdena
+  i mozliwosc wyboru metody przy wywolywaniu programu

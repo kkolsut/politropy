@@ -1,0 +1,111 @@
+autor: Krszyszto Kolsut
+       kolsut@antares.astrouw.edu.pl
+       
+LICENCJA:
+	program jest rozpowszechniany na licencji GNU GPL w wersji 2 
+	(lub nowszej)
+
+
+Program oblicza modele politropowe gwiazd.
+
+KOMPILACJA I URUCHAMIANIE
+
+Program kompilujemy wydajac polecenie make w katalogu w ktorym znajduja sie 
+pliki zrodlowe programu. 
+Domyslnym kompilatorem jest gcc, aby go zmienic nalezy wyedytowac plik
+Makefile i zmienic linijke "CC=gcc" na "CC=twoj_kompilator".
+W przypdaku bledow podczas kompilacja mozna sprobowac zmienic 
+kompilaytor z gcc na g++ - moze pomoze. 
+W przypadku bladow braku bibliotek  - nalezy zinstaolowac zainstaolowac!!
+
+Program mozna wywolywac z ponizszymi opcjami (albo baz - wtedy program 
+przyjmie domyslne wartosci) po kazdej opcji musi byc podany jej parametr!
+uzycie: ./politropy [opcja parametr]
+
+-i, --index	     podaje indeks politropy, dla roziazan fizycznych 
+		     index powinien sie zawierac w przedniale od 0 do 5
+		     dla innych wielkosci modele sa niefizyczne lub 
+		     program ich nie zbuduje. Wartoscia domyslna jest 3.5
+
+-s, --stala	     podaje stalo wystepujaca w rownaniu politropy. Stala
+		     ta zalezec moze od wielu czynnikow i powinno sie ja 
+		     dobierac tak, aby model zgadzal sie z obserwacjami
+		     lub chociaz dawal rozsadne wyniki:)
+		     wartoscia domyslna jest 4.5339e14
+
+-k, --krok	     podaje krok calkowania rownanie Lane'a-Emdena, im 
+		     krok mniejszy tem lepsza dokladnosc ale dluzszy czas 
+		     obliczen i wiekszy plik wynikowy. Wiekszy krok oznacza
+		     skrocenie czasu obliczen ale kosztem dokladnosci.
+		     Wartoscia domyslna jest 0.001
+
+-m, --masa	     ustawiamy mase gwiazdy dla ktorej chcemy zbudowac 
+		     model. Wiekosc ta jest podawana w masach slonca.
+		     Wartoscia domyslna jest 1
+
+-f, --file	     podeja nazwe pliku do ktorego program zapisze wyniki
+		     obliczen UWAGA!! jesli plik o tej nazwie istnieje
+		     zostanie nadpisany!!   
+		     Wartoscia domyslna jest stdout (w wiekszosci
+		     komputerow ekran)
+
+-p, --pamiec	     podaje maksymalny obszar pamieci jaki program moze 
+		     wykozystac. Jest to wartosc orientacyjna a nie
+		     dokladna!! Wielkosc ta podaje sie w megabajtach.
+		     UWAGA!! uzywac tylko z indeksem politropy >=5
+		     lub bliskim 5, w przeciwnycm wypadku program 
+		     moze nie obliczyc rownania Lema'a - Emdena
+		     do konca a tym samym zbuduje bledny model!!
+		     Jeli masz malo pamieci raczej zminiejsz krok 
+		     calkowania.
+		     Wartoscia domyslna jest 10 (10MB).
+
+-z, --zapis	     Ustala ktore dane z obliczen maja byc wypisane. 
+		     Dostepne opcje to:
+		     0 - wypisuje wszystko
+		     1 - wypisuje tylko rozwiazanie rownania Lane'a - 
+		         Emdena
+		     2 - wypisuje tylko wielkosci fizyczne
+		     Uklad wypisywanych danch jest opisany w sekcji
+		     WYPISYWANIE
+		     Wartoscia domyslna jest 0.
+
+-h, --help	     wyslietla pomoc.
+
+-v, --version	     wyswietla wersje programu
+
+
+
+WYPISYWANIE
+
+W zaleznosci od podanej opcji -z (--zapis) zostana wypisane nastepujace
+dane w kolejnosci kolumn:
+
+0 - ksi, teta, pochodna tety, promien, gestosc, cisnienie, temperatura
+
+1 - ksi, teta, pochodna tety
+
+2 - promien, gestosc, cisnienie, temperatura
+
+
+METODY CALKOWANIA
+
+Narazie dostepna jest tylko jedna metoda calkowania - w przyszlosci 
+planowanych jest ich wiecej (patrz TODO). 
+Dostepne metody:
+Bashworda-Moltona
+
+
+PRZYKLADY UZYCIA
+
+./ploitropy -i 2 -m 3 -f wynik.dat
+komenda ta opliczy model gwiazdy dla indeksu politropu 2, masie trzech
+mas Slonca, a wyniki obliczen zapisze do pliku wynik.dat.
+
+./politropy -p 1 -z 1
+obliczy model politropy z parametrami domyslnymi uzywajac maksymalnie 1MB 
+pamieci, wyniki wypisze na stdout ale tylko rozwiazanie rownanie Lame'a - 
+Emdena.
+
+
+		     
