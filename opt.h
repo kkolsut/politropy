@@ -1,3 +1,3 @@
 void help();
 
-void blad_opcji();
+void option_error();
