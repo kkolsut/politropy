@@ -1,11 +1,11 @@
 //io.h
 
 #include <stdio.h>
-void wypisz(double **tab, int N1, int M2);
+#include "calculations.h"
+void print_matrix(double **tab, int rows, int cols);
 
+void print_parameters(FILE *fp, struct parameters params, int size);
 
-void wypisz_wielkosci(FILE *fp, struct parametry wielkosci, int rozmair);
+void print_equation(FILE *fp, struct solution sol);
 
-void wypisz_rownanie(FILE *fp, struct rozwiazanie rownanie);
-
-void wypisz_wszystko(FILE *fp, struct rozwiazanie rownanie, struct parametry wielkosci);
+void print_all(FILE *fp, struct solution sol, struct parameters params);
